@@ -35,7 +35,7 @@ shinyServer(function(input, output,session) {
         
         pullOne <- function(pCode){
           fName <- str_replace(pCode,"/","-")
-          write.csv(Quandl(pCode,type="xts",start_date = startDate,end_date = endDate,collapse = freq),file=paste("temp/",fName,".csv",sep=""))
+          write.zoo(Quandl(pCode,type="xts",start_date = startDate,end_date = endDate,collapse = freq),file=paste("temp/",fName,".csv",sep=""),index.name = "Date",sep=",")
         }
         
         sapply(pullList, pullOne)
@@ -44,8 +44,8 @@ shinyServer(function(input, output,session) {
       pullFun(pullList)
       
       tar(paste(input$filename,'.tgz',sep=""),list.files(), compression = 'gzip')
-#       if (file.exists(paste0(input$filename, ".tgz")))
-#         file.rename(paste0(input$filename, ".tgz"), input$filename)
+      if (file.exists(paste0(input$filename, ".tgz")))
+        file.rename(paste0(input$filename, ".tgz"), file)
     }
 
   )
