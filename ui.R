@@ -35,5 +35,12 @@ shinyUI(fluidPage(
            br(),
            downloadButton('downloadData', 'Download')
     )
+  ),
+  br(),
+  hr(),
+  fluidRow(
+    column(12,
+           includeMarkdown("footer.md")
+    )
   )
 ))

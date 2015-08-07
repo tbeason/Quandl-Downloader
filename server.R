@@ -42,7 +42,7 @@ shinyServer(function(input, output,session) {
       }
       
       pullFun(pullList)
-      
+      on.exit(file.remove(list.files(normalizePath(paste(getwd(),"/temp",sep="")),full.names=TRUE)))
       tar(paste(input$filename,'.tgz',sep=""),list.files(), compression = 'gzip')
       if (file.exists(paste0(input$filename, ".tgz")))
         file.rename(paste0(input$filename, ".tgz"), file)
