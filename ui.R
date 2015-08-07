@@ -15,7 +15,7 @@ shinyUI(fluidPage(
              'stocks', 'Max of 25', choices = NULL,
              multiple = TRUE, options = list(maxItems = 25)
            ),
-           helpText("Use Backspace or Delete to remove selected items.")
+           helpText("Type to search. Use Backspace or Delete to remove selected items.")
     ),
     column(4,
            h4("Date Selection"),
@@ -33,7 +33,8 @@ shinyUI(fluidPage(
            textInput("filename", "File Name:", "stockdata"),
            helpText("Do not put a file extension in the name."),
            br(),
-           downloadButton('downloadData', 'Download')
+           downloadButton('downloadData', 'Download'),
+           helpText("Download times depend on the number of data points being fetched.")
     )
   ),
   br(),
